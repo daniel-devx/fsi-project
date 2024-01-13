@@ -1,0 +1,27 @@
+{
+  "name": "arg",
+  "version": "1.0.0",
+  "description": "Project",
+  "main": "server.js",
+  "author": "Daniel",
+  "license": "MIT",
+  "scripts": {
+    "dev": "concurrently --kill-others \"tsc -w\" \"nodemon ./build/server\"",
+    "start": "node ./build/server",
+    "build": "tsc"
+  },
+  "private": true,
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+"concurrently": "^8.2.2",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "mongoose": "^8.0.4",
+    "typescript": "^5.3.3"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.21",
+    "nodemon": "^3.0.2",
+    "ts-node": "^10.9.2"
+  }
+}
