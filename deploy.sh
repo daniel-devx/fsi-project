@@ -1,2 +1,2 @@
-yarn add
+yarn
 yarn build
