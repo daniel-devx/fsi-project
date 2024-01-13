@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Question Form</title>
+    <style>
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        background-color: #f4f4f4;
+        color: #333;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+      }
+
+      form {
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        max-width: 400px;
+        width: 100%;
+      }
+
+      h1 {
+        text-align: center;
+        color: #555;
+      }
+
+      label {
+        display: block;
+        margin-bottom: 8px;
+        color: #666;
+      }
+
+      input,
+      textarea,
+      button {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 15px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        box-sizing: border-box;
+        font-size: 16px;
+      }
+
+      input[type="file"] {
+        padding: 8px;
+      }
+
+      button {
+        background-color: #4caf50;
+        color: white;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+      }
+
+      button:hover {
+        background-color: #45a049;
+      }
+    </style>
+  </head>
+  <body>
+    <form id="questionForm">
+      <h1>Question Form</h1>
+
+      <label for="questionHeading">Question Heading:</label>
+      <input type="text" id="questionHeading" required />
+
+      <label for="mainQuestion">Main Question:</label>
+      <textarea id="mainQuestion" rows="4" required></textarea>
+
+      <label for="pdfFile">Upload PDF:</label>
+      <input type="file" id="pdfFile" accept=".pdf" />
+
+      <label for="imageFile">Upload Image:</label>
+      <input type="file" id="imageFile" accept="image/*" />
+
+      <label for="hashtags">Hashtags (comma-separated):</label>
+      <input type="text" id="hashtags" />
+
+      <button type="button" onclick="saveQuestion()">Save Question</button>
+    </form>
+
+    <script>
+      function saveQuestion() {
+        // Get values from the form
+        var questionHeading = document.getElementById("questionHeading").value;
+        var mainQuestion = document.getElementById("mainQuestion").value;
+        var pdfFile = document.getElementById("pdfFile").files[0];
+        var imageFile = document.getElementById("imageFile").files[0];
+        var hashtags = document.getElementById("hashtags").value.split(",");
+
+        // Save data to local storage (this is just an example, in a real app, you would send this to a server)
+        var questionData = {
+          questionHeading: questionHeading,
+          mainQuestion: mainQuestion,
+          pdfFile: pdfFile ? pdfFile.name : null,
+          imageFile: imageFile ? imageFile.name : null,
+          hashtags: hashtags,
+        };
+
+        localStorage.setItem("savedQuestion", JSON.stringify(questionData));
+        console.log(questionData);
+
+        // Optionally, you can clear the form after saving
+        document.getElementById("questionForm").reset();
+
+        // You may want to perform additional actions (e.g., send data to a server) here
+      }
+    </script>
+  </body>
+</html>

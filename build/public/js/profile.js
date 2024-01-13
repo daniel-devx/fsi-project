@@ -16,16 +16,11 @@ const user1 = [
     location: "21 isolo lagos state",
     lang: "english",
     socialmedia: "@david",
-    investmentStatus: {
-      slotopened: {
-        date: "12/1/2024",
-        stillopen: true,
-      },
-      slotclosed: {
-        stillopen: false,
-      },
-      investmentinuse: "",
-      returnsmade: false,
+    slot: {
+      totalslotvalue: 234000,
+      slotvalue: 1000,
+      totalexisitingslot: 234,
+      avialableslots: 210,
     },
   },
 ];
@@ -107,18 +102,18 @@ function investmentcontainer(item) {
               src="https://uxwing.com/wp-content/themes/uxwing/download/banking-finance/investment-icon.png"
             />
             <ul>
-  <li>cumulative slot value <span>234000</span>></li>
+  <li>cumulative slot value <span> ${item.slot.totalslotvalue}</span></li>
   <hr />
-  <li>total exsisting slot: <span>234</span>></li>
+  <li>total exsisting slot: <span>${item.slot.totalslotvalue}</span></li>
   <hr />
-  <li>single slot value: <span>20</span>></li>
+  <li>single slot value: <span>${item.slot.slotvalue}</span></li>
   <hr />
 </ul>
 <form>
     <label for="numericInput">Enter a number of slot to be bought:</label>
     <br>
     <input type="number" id="numericInput" name="numericInput" pattern="[0-9]*" required>
-    <input type="submit" value="Submit">
+    <input type="submit" value="Submit" onclick="getNumericInput()">
 </form>
 <br>
             <div class="progress">
@@ -167,6 +162,7 @@ document.getElementById("myTab").addEventListener("click", function (event) {
     document.getElementById("gatheringcontrol").classList.remove("active");
     document.getElementById("shopitem").innerHTML +=
       investmentcontainer("item");
+    getnumericadata();
   }
   if (event.target.id === "gatheringbutton") {
     document.getElementById("shopitem").innerHTML = "";
@@ -187,3 +183,8 @@ document.getElementById("myTab").addEventListener("click", function (event) {
     });
   }
 });
+function getnumericadata() {
+  let numericInputValue = document.getElementById("numericInput").value;
+  console.log(numericInputValue);
+}
+getnumericadata();
